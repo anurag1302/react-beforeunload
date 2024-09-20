@@ -3,11 +3,15 @@ import "./App.css";
 
 function App() {
   const [hasChanged, setHasChanged] = useState(false);
-
   useEffect(() => {
     function handleBeforeUnload(e) {
       e.preventDefault();
       e.returnValue = "";
+
+      fetch("https://jsonplaceholder.typicode.com/todos/1")
+        .then((response) => response.json())
+        .then((json) => console.log("data", json));
+
       return e.returnValue;
     }
     window.addEventListener("beforeunload", handleBeforeUnload);
