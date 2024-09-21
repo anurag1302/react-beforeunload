@@ -3,14 +3,20 @@ import "./App.css";
 
 function App() {
   const [hasChanged, setHasChanged] = useState(false);
-  // useEffect(() => {
+
+  //useEffect(() => {
   //   function handleBeforeUnload(e) {
   //     e.preventDefault();
   //     e.returnValue = "";
 
-  //     fetch("https://jsonplaceholder.typicode.com/todos/1")
-  //       .then((response) => response.json())
-  //       .then((json) => console.log("data", json));
+  //     const requestOptions = {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify({ userId: '12345' })
+  //   };
+  //   fetch('http://localhost:5150/api/Values/logout', requestOptions)
+  //       .then(response => response.json())
+  //       .then(data => console.log(data));
 
   //     return e.returnValue;
   //   }
@@ -30,9 +36,14 @@ function App() {
   }, [hasChanged]);
 
   const handleTabClosing = () => {
-    fetch("https://jsonplaceholder.typicode.com/todos/1")
-      .then((response) => response.json())
-      .then((json) => console.log("data", json));
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: '12345' })
+  };
+  fetch('http://localhost:5150/api/Values/logout', requestOptions)
+      .then(response => response.json())
+      .then(data => console.log(data));
   };
 
   const alertUser = (event) => {
